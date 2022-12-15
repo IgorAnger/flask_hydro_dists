@@ -13,14 +13,14 @@
 <p style="background-color:SlateBlue;">Number of optimization cycles: {{opt_lines}}</p>
 <p style="background-color:SlateBlue;">H distances in initial geometry:</p>
 <ul>
-{% for el in dist_init_list %}
-<li> {{el}} </li>
-{% endfor %}
+	{% for el in dist_init_list %}
+		<li> {{el}} </li>
+	{% endfor %}
 </ul>
 <p style="background-color:SlateBlue;">H distances in chosen cycle geometry:</p>
 <ul>
 	{% for elem in dist_cycle_list %}
-	<li>{{elem}}</li>
+		<li>{{elem}}</li>
 	{% endfor %}
 </ul>
 </body>  

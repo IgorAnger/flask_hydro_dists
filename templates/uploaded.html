@@ -1,23 +1,19 @@
 <html>  
-<head>  
-<title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	File uploaded</title>  
+<head>
+<title>File uploaded</title>  
 </head>  
-<body>  
-<p style="background-color:SlateBlue;">File uploaded successfully</p>
-<p style="background-color:SlateBlue;">Filename: {{fname}}</p>
-<p style="background-color:SlateBlue;">Number of atoms: {{num_atoms}}</p>
-<p style="background-color:SlateBlue;">Number of optimization cycles: {{opt_lines}}</p>
-<p style="background-color:SlateBlue;">H distances in initial geometry:</p>
+<body style="background: url(../static/v2.jpg); font-family: verdana; color: white;">    
+	<p >File uploaded successfully</p>
+	<p >Filename: {{fname}}</p>
+	<p >Number of atoms: {{num_atoms}}</p>
+	<p >Number of optimization cycles: {{opt_lines}}</p>
+	<p >H distances in the initial geometry:</p>
 <ul>
-{% for el in dist_init_list %}
-<li> {{el}} </li>
-{% endfor %}
+	{% for el in dist_init_list %}
+		<li> {{el}} </li>
+	{% endfor %}
 </ul>
-<p style="background-color:SlateBlue;">H distances in chosen cycle geometry:</p>
+<p>H distances in the chosen cycle geometry:</p>
 <ul>
 	{% for elem in dist_cycle_list %}
 	<li>{{elem}}</li>

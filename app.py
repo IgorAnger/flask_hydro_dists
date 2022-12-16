@@ -39,7 +39,6 @@ def uploaded() -> "html":
 				l_index_end = l_index
 				l_index_end = l_index_end
 		num_atoms = l_index_end - l_index_start -1
-		print(f"number of atoms: {num_atoms}, molecule 1 - {n_atom_1} atoms, molecule 2 - {num_atoms - n_atom_1} atoms")
 		xyz_list = lines[l_index_start+1:l_index_end]
 		xyz_list1 = xyz_list[:n_atom_1]										
 		xyz_list2 = xyz_list[n_atom_1:]
@@ -69,13 +68,11 @@ def uploaded() -> "html":
 				if dist < 3.0:
 					dist_init = f"Distance between: {xyz_list1_h[i][0]} and: {xyz_list2_h[k][0]} is: {dist}"
 					dist_init_list.append(dist_init) 
-					print(f"Initial Geometry: Distance between {xyz_list1_h[i][0]} and {xyz_list2_h[k][0]} atom: {dist}nm")
 		opt_lines = 0
 		for index, line in enumerate(lines):
 			line = line.lower().strip()
 			if 'geometry optimization cycle' in line:
 				opt_lines += 1
-		print(f" Number of optimization cycles: {opt_lines}")
 		cycle_n = request.form['cycle_n']
 		cycle_n = int(cycle_n)
 		if cycle_n < 10:
@@ -116,7 +113,6 @@ def uploaded() -> "html":
 				d = np.array([xyz_cycle2_df.iloc[l,2],xyz_cycle2_df.iloc[l,3],xyz_cycle2_df.iloc[l,4]])
 				dist = np.linalg.norm(c-d)
 				if dist < res_dist:
-					print(f"Cycle {cycle_n}: Distance between {xyz_cycle1_df.iloc[j,0]} and {xyz_cycle2_df.iloc[l,0]} atom: {dist}nm")
 					dist_cycle = f"Cycle {cycle_n}: Distance between {xyz_cycle1_df.iloc[j,0]} and {xyz_cycle2_df.iloc[l,0]} atom: {dist}nm"
 					dist_cycle_list.append(dist_cycle)
 		return render_template('uploaded.html', fname = f.filename, num_atoms=num_atoms, opt_lines=opt_lines, dist_init_list=dist_init_list, dist_cycle_list=dist_cycle_list)
